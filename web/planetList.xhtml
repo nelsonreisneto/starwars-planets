@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible"/>
+    <title>Planetas StarWars</title>
+    <style type="text/css">
+        .tableUpdated {
+            width: 90% !important;
+            margin: 17px 58px 0 !important;
+        }
+
+        .btnSpace {
+            margin: 17px;
+        }
+    </style>
+</h:head>
+<h:body>
+    <div style="text-align: center;"><h2><h:outputText value="Planetas de StarWars Cadastrados"/></h2></div>
+    <h:form id="planetsForm">
+        <p:dataTable id="planetsTable" value="#{starwars.getAllPlanets()}" var="planets"
+                     styleClass="table table-striped table-bordered tableUpdated">
+            <p:column>
+                <f:facet name="header">Id</f:facet>
+                <h:outputText value="#{planets.id}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">Nome</f:facet>
+                <h:outputText value="#{planets.name}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">Clima</f:facet>
+                <h:outputText value="#{planets.climate}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">Terreno</f:facet>
+                <h:outputText value="#{planets.terrain}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">Filmes</f:facet>
+                <h:outputText value="#{planets.films}"/>
+            </p:column>
+            <p:column>
+                <h:commandButton action="editPlanet.xhtml" value="Update" styleClass="btn btn-primary">
+                    <f:param name="selectedPlanetId" value="#{planets.id}"/>
+                </h:commandButton>
+            </p:column>
+            <p:column>
+                <h:commandButton action="#{starwars.deletePlanet(planets.id)}" value="Delete"
+                                 styleClass="btn btn-danger"/>
+            </p:column>
+        </p:dataTable>
+        <div align="center">
+        <div class="col-sm-updated" ><h:commandButton value="Adicionar Novo Planeta" action="${starwars.toAdd()}"/></div>
+        <div/>
+            <h:commandButton style="alignment: center" action="#{starwars.deleteAll()}" value="Apagar todos registros"
+                             styleClass="btn btn-danger"/>
+        </div>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet />
+    <title>Planetas StarWars</title>
+    <style type="text/css">
+        .updateBtnStyle {
+            width: 80px !important;
+        }
+        .col-sm-updated {
+            padding-top: 7px;
+        }
+        .col-sm-updated a {
+            text-decoration: none !important;
+        }
+        .text-edit {
+            margin-left: 123px !important;
+            margin-top: 29px !important;
+        }
+    </style>
+</h:head>
+<h:body>
+    <div style="text-align: center;"><h2><h:outputText value="Editar Planeta"/></h2></div>
+    <h:form id="editSchoolForm" styleClass="form-horizontal">
+        <p:panelGrid columns="3">
+            <p:outputLabel for="planet-name" styleClass="control-label col-sm-4">Id:
+                <p:outputLabel value="Geração automatica" styleClass="text text-success"/></p:outputLabel>
+            <p:outputLabel/>
+            <p:outputLabel/>
+
+            <p:outputLabel for="planet-name" styleClass="control-label col-sm-4">Name:</p:outputLabel>
+            <p:inputText id="planet-name" value="#{starwars.planet.name}" styleClass="form-control"
+                         required="true" requiredMessage="Nome não pode estar vazio."/>
+            <p:message for="planet-name" styleClass="text text-danger"/>
+
+            <p:outputLabel for="planet-climate" styleClass="control-label col-sm-4">Climate:</p:outputLabel>
+            <p:inputText var="climate" id="planet-climate" value="#{starwars.planet.climate}"
+                         styleClass="form-control" required="true"
+                         requiredMessage="Clima não pode estar vazio."/>
+            <p:message for="planet-name" styleClass="text text-danger"/>
+
+            <p:outputLabel for="planet-terrain" styleClass="control-label col-sm-4">Terrain:</p:outputLabel>
+            <p:inputText var="terrain" id="planet-terrain" value="#{starwars.planet.terrain}"
+                         styleClass="form-control" required="true"
+                         requiredMessage="Terreno não pode estar vazio."/>
+            <p:message for="planet-name" styleClass="text text-danger"/>
+        </p:panelGrid>
+
+        <div class="form-group">
+            <div class="col-sm-4">
+                <div style="text-align: center;"><h:commandButton action="#{starwars.updatePlanet(starwars.planet)}" value="Editar o planeta" styleClass="btn btn-success btnSpace" /></div>
+                <div class="col-sm-updated"><h:outputLink value="planetList.xhtml">Visualizar lista de planetas.</h:outputLink></div>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>
