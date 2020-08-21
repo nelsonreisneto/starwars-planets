@@ -22,3 +22,5 @@ Este CRUD inclui, exclui e edita planetas de starwars, além de pesquisar na apo
 ```
 
 ## Para execução
+Deve baixar o projeto do repositorio um um git clone REPOSITORIO, após deve configurar uma execução com o
+tomcat, com a URL http://localhost:8090/star_wars_planets_war_exploded/"
